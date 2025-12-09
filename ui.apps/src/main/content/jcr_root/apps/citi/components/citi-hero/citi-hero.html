@@ -1,0 +1,31 @@
+<!--/*-->
+<!-- Citi Hero Component -->
+<!--/*-->
+<section class="hero-section">
+    <div class="hero-carousel">
+        <div class="hero-slide active">
+            <div class="hero-background">
+                <img src="${properties.backgroundImage || '/content/dam/citi/images/hero/wealth-experience.gif'}" 
+                     alt="${properties.backgroundAlt || ''}" 
+                     class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="container">
+                    <div class="hero-text">
+                        <h1 class="hero-title" data-sly-text="${properties.title || 'A Wealth Experience Designed Around You'}">A Wealth Experience Designed Around You</h1>
+                        <p class="hero-description" data-sly-text="${properties.description || 'More than just banking—experience a wealth journey built around your ambitions, with exclusive privileges, global access, and personalised financial strategies.'}">More than just banking—experience a wealth journey built around your ambitions, with exclusive privileges, global access, and personalised financial strategies.</p>
+                        <div class="hero-actions">
+                            <a href="${properties.ctaLink || '#'}" 
+                               class="btn btn--hero"
+                               data-sly-test="${properties.ctaText}"
+                               data-sly-text="${properties.ctaText || 'Get Started'}">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

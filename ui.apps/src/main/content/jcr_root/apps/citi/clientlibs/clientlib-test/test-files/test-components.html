@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamification Components Test</title>
+    <link rel="stylesheet" href="css/gamification-components.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .component-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #666;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 Gamification Components Test</h1>
+    
+    <div class="status success">
+        ✅ Testing React-based gamification components with proper data binding
+    </div>
+
+    <!-- Spin Wheel Component Test -->
+    <div class="component-section">
+        <h2>🎡 Spin Wheel Component</h2>
+        <div class="sw-cmp-default" 
+             data-sw-btn-text="SPIN NOW" 
+             data-sw-spinning-text="Spinning...">
+        </div>
+        <div class="sw-cmp-segments" 
+             data-sw-segments='[{"segmentText":"10% Off","segmentValue":"DISCOUNT10","segmentColor":"#FFC300"},{"segmentText":"Free Shipping","segmentValue":"FREESHIP","segmentColor":"#FF5733"},{"segmentText":"Buy One Get One","segmentValue":"BOGO","segmentColor":"#C70039"},{"segmentText":"20% Off","segmentValue":"DISCOUNT20","segmentColor":"#900C3F"},{"segmentText":"No Luck","segmentValue":"NOLUCK","segmentColor":"#581845"},{"segmentText":"Gift Card","segmentValue":"GIFTCARD","segmentColor":"#2E86C1"}]'>
+        </div>
+        <div id="spin-wheel-container" class="loading">
+            <div class="spinner"></div>
+            Loading Spin Wheel...
+        </div>
+    </div>
+
+    <!-- Pick-a-Gift Component Test -->
+    <div class="component-section">
+        <h2>🎁 Pick-a-Gift Component</h2>
+        <div class="pick-gift-default" 
+             data-gift-title="Choose Your Gift!">
+        </div>
+        <div class="pick-gift-details" 
+             data-gift-details='[{"text":"30% OFF","value":"Use code: GIFT30","color":"#e74c3c","icon":"🎯"},{"text":"Free Shipping","value":"On orders over $25","color":"#3498db","icon":"🚚"},{"text":"$15 Gift Card","value":"Valid for 60 days","color":"#27ae60","icon":"💳"}]'>
+        </div>
+        <div id="pick-a-gift-container" class="loading">
+            <div class="spinner"></div>
+            Loading Pick-a-Gift...
+        </div>
+    </div>
+
+    <!-- Scratch Card Component Test -->
+    <div class="component-section">
+        <h2>🎯 Scratch Card Component</h2>
+        <div class="scratch-card-default" 
+             data-scratch-card-title="Scratch to Win!">
+        </div>
+        <div class="scratch-card-details" 
+             data-scratch-card-details='[{"prizeName":"Congratulations!","prizeCode":"You won a $50 gift card!","bgColor":"#4CAF50","iconPath":"🎉"}]'>
+        </div>
+        <div id="citi-scratch-card-container" class="loading">
+            <div class="spinner"></div>
+            Loading Scratch Card...
+        </div>
+    </div>
+
+    <!-- Load React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Load the gamification components -->
+    <script src="js/gamification-components.umd.js"></script>
+    
+    <!-- Load the custom initialization script -->
+    <script src="js/custom.js"></script>
+
+    <script>
+        // Test script to verify components are working
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Testing Gamification Components...');
+            
+            // Check if all required dependencies are loaded
+            const dependencies = {
+                'React': typeof window.React,
+                'ReactDOM': typeof window.ReactDOM,
+                'GamificationComponents': typeof window.GamificationComponents
+            };
+            
+            console.log('Dependencies check:', dependencies);
+            
+                         // Check if specific components are available
+             if (window.GamificationComponents) {
+                 console.log('GamificationComponents object:', window.GamificationComponents);
+                 const components = [
+                     'SpinWheel', 'PickAGift', 'ScratchCard', 'MemoryMatchGame', 
+                     'MysteryPrizeEgg', 'Quiz', 'MultiStepQuiz', 
+                     'SlotMachine', 'ScavengerHunt'
+                 ];
+                
+                components.forEach(component => {
+                    if (window.GamificationComponents[component]) {
+                        console.log(`✅ ${component} component loaded successfully`);
+                    } else {
+                        console.error(`❌ ${component} component not found`);
+                    }
+                });
+            } else {
+                console.error('❌ GamificationComponents not loaded');
+            }
+            
+            // Check for containers
+            const containers = [
+                { selector: '#spin-wheel-container', name: 'Spin Wheel' },
+                { selector: '#pick-a-gift-container', name: 'Pick-a-Gift' },
+                { selector: '#citi-scratch-card-container', name: 'Scratch Card' }
+            ];
+            
+            containers.forEach(container => {
+                const element = document.querySelector(container.selector);
+                if (element) {
+                    console.log(`✅ ${container.name} container found`);
+                } else {
+                    console.error(`❌ ${container.name} container not found`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

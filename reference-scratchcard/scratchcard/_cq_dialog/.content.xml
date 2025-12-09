@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Properties"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs jcr:primaryType="nt:unstructured" 	sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+	                            jcr:primaryType="nt:unstructured"             				
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                fieldDescription="Title"
+                                name="./title"/> 
+                            <cardDetails
+                                jcr:primaryType="nt:unstructured"
+                                fieldLabel="Card Details"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true">              
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./cardDetails">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <cardText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Card Text"
+                                            name="./cardText" />
+                                        <cardValue
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Card Value"
+                                            name="./cardValue" />
+                                        <cardColor jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Card Color"
+                                            name="./cardColor">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <yellowOrange jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select/option"
+                                                    text="Bright yellow-orange"
+                                                    value="#FFC300"/>
+                                                <reddishOrange jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select/option"
+                                                    text="Vivid reddish-orange"
+                                                    value="#FF5733"/>
+                                                <crimsonRed jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select/option"
+                                                    text="Vibrant crimson red"
+                                                    value="#C70039"/>
+                                                <burgundy jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select/option"
+                                                    text=" Burgundy"
+                                                    value="#900C3F"/>
+                                                <purple jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select/option"
+                                                    text="Muted purple"
+                                                    value="#581845"/>
+                                                <steelBlue jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select/option"
+                                                    text="Steel blue"
+                                                    value="#2E86C1"/>
+                                            </items>
+                                        </cardColor>
+                                        <icon
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            enableNextGenDynamicMedia="{Boolean}true"
+                                            fieldLabel="Icon"
+                                            fileNameParameter="./iconName"
+                                            fileReferenceParameter="./iconReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            name="./icon"/>                                                   
+                                    </items>
+                                </field>
+                            </cardDetails> 
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

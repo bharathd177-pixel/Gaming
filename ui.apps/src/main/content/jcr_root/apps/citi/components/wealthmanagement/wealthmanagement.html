@@ -1,0 +1,28 @@
+<section class="wealth-management-section" data-sly-use.model="com.citi.hub.core.models.WealthModel"
+    data-sly-use.templates="core/wcm/components/commons/v1/templates.html" data-sly-test="${model.title}">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">${model.title}</h2>
+            <p class="section-description" data-sly-test="${model.description}">${model.description}</p>
+        </div>
+
+        <div class="wealth-cards" data-sly-list.wealthCards="${model.wealthCards}">
+            <div class="wealth-card" data-sly-test="${wealthCards.cardTitle}">
+                <div class="wealth-card__content">
+                    <h3 class="wealth-card__title">${wealthCards.cardTitle}</h3>
+                    <p class="wealth-card__description" data-sly-test="${wealthCards.cardDescription}">${wealthCards.cardDescription}</p>
+                    <div class="wealth-card__icon" data-sly-test="${wealthCards.cardImageReference}">
+                        <img src="${wealthCards.cardImageReference}" alt="Global Wealth">
+                    </div>
+                    <button class="wealth-card__arrow" data-sly-test="${wealthCards.cardImageReference}">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !model.title}"></sly>

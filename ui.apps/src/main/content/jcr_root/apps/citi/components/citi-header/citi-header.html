@@ -1,0 +1,92 @@
+<!--/*-->
+<!-- Citi Header Component -->
+<!--/*-->
+<header class="citi-header">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar__content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="${properties.logoLink || '#'}" class="logo__link">
+                        <img src="${properties.logoImage || '/content/dam/citi/images/logos/logo-footer.png'}" 
+                             alt="${properties.logoAlt || 'Citibank'}" 
+                             class="logo__image">
+                    </a>
+                </div>
+                
+                <!-- Top Bar Actions -->
+                <div class="top-bar-actions">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="lang-btn">
+                            <span data-sly-text="${properties.languageCode || 'EN'}">EN</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Search Icon -->
+                    <button class="search-btn" aria-label="${properties.searchLabel || 'Search'}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Sign On Menu -->
+                    <div class="sign-on-menu">
+                        <details class="sign-on-dropdown">
+                            <summary class="sign-on-trigger">
+                                <svg class="sign-on-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="10,17 15,12 10,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="sign-on-text" data-sly-text="${properties.signOnText || 'Sign On'}">Sign On</span>
+                            </summary>
+                            <ul class="sign-on-menu-list">
+                                <li><a href="${properties.signOnLink1 || '#'}" target="_blank">${properties.signOnText1 || 'Online Banking'}</a></li>
+                                <li><a href="${properties.signOnLink2 || '#'}" target="_blank">${properties.signOnText2 || 'Credit Cards'}</a></li>
+                                <li><a href="${properties.signOnLink3 || '#'}" target="_blank">${properties.signOnText3 || 'Investment'}</a></li>
+                            </ul>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-navigation">
+        <div class="container">
+            <div class="nav-content">
+                <!-- Mobile Menu Button -->
+                <button type="button" class="mobile-menu-btn" aria-label="${properties.mobileMenuLabel || 'Menu'}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Desktop Navigation -->
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="${properties.navLink1 || '#'}" class="nav-link">${properties.navText1 || 'Personal Banking'}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="${properties.navLink2 || '#'}" class="nav-link">${properties.navText2 || 'Wealth Management'}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="${properties.navLink3 || '#'}" class="nav-link">${properties.navText3 || 'Credit Cards'}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="${properties.navLink4 || '#'}" class="nav-link nav-link--cta">${properties.navText4 || 'Get Started'}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

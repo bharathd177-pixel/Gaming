@@ -1,0 +1,25 @@
+<section class="hero-section" data-sly-use.model="com.citi.hub.core.models.HeroModel"
+    data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+    data-sly-test="${model.title}">
+    <div class="hero-carousel">
+        <div class="hero-slide active">
+            <div class="hero-background" data-sly-test="${model.heroBackgroundReference}">
+                <img src="${model.heroBackgroundReference}" alt="" class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="container">
+                    <div class="hero-text">
+                        <h1 class="hero-title">${model.title}</h1>
+                        <p class="hero-description" data-sly-test="${model.description}">${model.description}
+                        </p>
+                        <div class="hero-actions" data-sly-test="${model.buttonName}">
+                            <a href="${model.buttonUrl}" class="btn btn--hero">${model.buttonName}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !model.title}"></sly>

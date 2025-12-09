@@ -1,0 +1,34 @@
+###############################################################################
+# Copyright 2017 Adobe Systems Incorporated
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+###############################################################################
+
+# AMD Shim (disable define so UMDs attach to window)
+gamification-amd-shim-start.js
+
+# React Dependencies (must be loaded first)
+react.production.min.js
+react-dom.production.min.js
+
+# Gamification Components UMD Bundle (React + Components)
+gamification-components.umd.js
+
+# Restore AMD define
+gamification-amd-shim-end.js
+
+# Citi Scratch Card Integration
+scratchcard-integration.js
+
+# Citi Wheel Spin Game Integration moved to isolated clientlib
+

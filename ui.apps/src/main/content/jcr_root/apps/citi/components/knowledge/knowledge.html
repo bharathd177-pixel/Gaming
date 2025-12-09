@@ -1,0 +1,27 @@
+<section class="knowledge-section" data-sly-use.model="com.citi.hub.core.models.KnowledgeModel"
+    data-sly-use.templates="core/wcm/components/commons/v1/templates.html" data-sly-test="${model.title}">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">${model.title}</h2>
+            <p class="section-description">${model.description}</p>
+        </div>
+
+        <div class="knowledge-cards" data-sly-list.knowledgeCards="${model.knowledgeCards}" data-sly-test="${model.knowledgeCards}">
+            <article class="knowledge-card" data-sly-test="${knowledgeCards.cardTitle}">
+                <div class="knowledge-card__image">
+                    <img src="${knowledgeCards.cardImageReference}" alt="Big Tech triumphs, macro mixed" data-sly-test="${knowledgeCards.cardImageReference}">
+                </div>
+                <div class="knowledge-card__content">
+                    <h3 class="knowledge-card__title">${knowledgeCards.cardTitle}</h3>
+                    <time class="knowledge-card__date" data-sly-test="${knowledgeCards.cardDate}">${knowledgeCards.cardDate}</time>
+                    <p class="knowledge-card__excerpt" data-sly-test="${knowledgeCards.cardDescription}">${knowledgeCards.cardDescription}</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="section-actions" data-sly-test="${model.knowledgeCards}">
+            <a href="#" class="btn btn--outline">View All Articles</a>
+        </div>
+    </div>
+</section>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !model.title}"></sly>

@@ -1,0 +1,16 @@
+<section class="mobile-banking-section" data-sly-use.model="com.citi.hub.core.models.MobileBankingModel"
+    data-sly-use.templates="core/wcm/components/commons/v1/templates.html" data-sly-test="${model.title}">
+    <div class="container">
+        <div class="mobile-content">
+            <div class="mobile-text">
+                <h2 class="section-title">${model.title}</h2>
+                <p class="section-description" data-sly-test="${model.description}">${model.description}</p>
+                <a href="${model.buttonLink}" class="btn btn--primary" data-sly-test="${model.buttonName}">${model.buttonName}</a>
+            </div>
+            <div class="mobile-image" data-sly-test="${model.imageReference}">
+                <img src="${model.imageReference}" alt="Citi Mobile App">
+            </div>
+        </div>
+    </div>
+</section>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !model.title}"></sly>

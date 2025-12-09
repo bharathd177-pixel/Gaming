@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Citi Header"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <logo
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <logoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        fieldLabel="Logo Image"
+                                        fileNameParameter="./logoImage"
+                                        fileReferenceParameter="./logoImageRef"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./logoImage"
+                                        title="Upload Logo Image"/>
+                                    <logoLink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Logo Link"
+                                        name="./logoLink"
+                                        rootPath="/content"/>
+                                    <logoAlt
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Logo Alt Text"
+                                        name="./logoAlt"/>
+                                </items>
+                            </logo>
+                            <language
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <languageCode
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Language Code"
+                                        name="./languageCode"/>
+                                </items>
+                            </language>
+                            <search
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <searchLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Search Button Label"
+                                        name="./searchLabel"/>
+                                </items>
+                            </search>
+                        </items>
+                    </general>
+                    <signon
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sign On"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <signOnText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Sign On Button Text"
+                                name="./signOnText"/>
+                            <signOn1
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <signOnText1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Sign On Link 1 Text"
+                                        name="./signOnText1"/>
+                                    <signOnLink1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Sign On Link 1 URL"
+                                        name="./signOnLink1"
+                                        rootPath="/content"/>
+                                    <signOnTarget1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Sign On Link 1 Target"
+                                        name="./signOnTarget1">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <_blank
+                                                jcr:primaryType="nt:unstructured"
+                                                text="_blank"
+                                                value="_blank"/>
+                                            <_self
+                                                jcr:primaryType="nt:unstructured"
+                                                text="_self"
+                                                value="_self"/>
+                                        </items>
+                                    </signOnTarget1>
+                                </items>
+                            </signOn1>
+                            <signOn2
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <signOnText2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Sign On Link 2 Text"
+                                        name="./signOnText2"/>
+                                    <signOnLink2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Sign On Link 2 URL"
+                                        name="./signOnLink2"
+                                        rootPath="/content"/>
+                                    <signOnTarget2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Sign On Link 2 Target"
+                                        name="./signOnTarget2">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <_blank
+                                                jcr:primaryType="nt:unstructured"
+                                                text="_blank"
+                                                value="_blank"/>
+                                            <_self
+                                                jcr:primaryType="nt:unstructured"
+                                                text="_self"
+                                                value="_self"/>
+                                        </items>
+                                    </signOnTarget2>
+                                </items>
+                            </signOn2>
+                            <signOn3
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <signOnText3
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Sign On Link 3 Text"
+                                        name="./signOnText3"/>
+                                    <signOnLink3
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Sign On Link 3 URL"
+                                        name="./signOnLink3"
+                                        rootPath="/content"/>
+                                    <signOnTarget3
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Sign On Link 3 Target"
+                                        name="./signOnTarget3">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <_blank
+                                                jcr:primaryType="nt:unstructured"
+                                                text="_blank"
+                                                value="_blank"/>
+                                            <_self
+                                                jcr:primaryType="nt:unstructured"
+                                                text="_self"
+                                                value="_self"/>
+                                        </items>
+                                    </signOnTarget3>
+                                </items>
+                            </signOn3>
+                        </items>
+                    </signon>
+                    <navigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Navigation"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <mobileMenuLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Mobile Menu Label"
+                                name="./mobileMenuLabel"/>
+                            <nav1
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <navText1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation 1 Text"
+                                        name="./navText1"/>
+                                    <navLink1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Navigation 1 Link"
+                                        name="./navLink1"
+                                        rootPath="/content"/>
+                                    <nav1IsCTA
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldLabel="Navigation 1 is CTA"
+                                        name="./nav1IsCTA"
+                                        text="Is Call-to-Action"/>
+                                </items>
+                            </nav1>
+                            <nav2
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <navText2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation 2 Text"
+                                        name="./navText2"/>
+                                    <navLink2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Navigation 2 Link"
+                                        name="./navLink2"
+                                        rootPath="/content"/>
+                                    <nav2IsCTA
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldLabel="Navigation 2 is CTA"
+                                        name="./nav2IsCTA"
+                                        text="Is Call-to-Action"/>
+                                </items>
+                            </nav2>
+                            <nav3
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <navText3
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation 3 Text"
+                                        name="./navText3"/>
+                                    <navLink3
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Navigation 3 Link"
+                                        name="./navLink3"
+                                        rootPath="/content"/>
+                                    <nav3IsCTA
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldLabel="Navigation 3 is CTA"
+                                        name="./nav3IsCTA"
+                                        text="Is Call-to-Action"/>
+                                </items>
+                            </nav3>
+                            <nav4
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <navText4
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation 4 Text"
+                                        name="./navText4"/>
+                                    <navLink4
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Navigation 4 Link"
+                                        name="./navLink4"
+                                        rootPath="/content"/>
+                                    <nav4IsCTA
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldLabel="Navigation 4 is CTA"
+                                        name="./nav4IsCTA"
+                                        text="Is Call-to-Action"/>
+                                </items>
+                            </nav4>
+                            <nav5
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <navText5
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Navigation 5 Text"
+                                        name="./navText5"/>
+                                    <navLink5
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Navigation 5 Link"
+                                        name="./navLink5"
+                                        rootPath="/content"/>
+                                    <nav5IsCTA
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldLabel="Navigation 5 is CTA"
+                                        name="./nav5IsCTA"
+                                        text="Is Call-to-Action"/>
+                                </items>
+                            </nav5>
+                        </items>
+                    </navigation>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
