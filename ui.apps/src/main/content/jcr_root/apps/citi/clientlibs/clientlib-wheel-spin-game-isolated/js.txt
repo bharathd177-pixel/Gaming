@@ -1,2 +1,0 @@
-# Complete Wheel Spin Game Integration Script
-wheel-spin-game-complete.js

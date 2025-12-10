@@ -1,0 +1,92 @@
+/* ========================================
+   RESPONSIVE STYLES - Media Queries
+   ======================================== */
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  #gameContainer {
+    height: calc(100vh - 60px);
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
+  
+  .tap-to-start-content h2 {
+    font-size: 2rem;
+  }
+
+  .tap-indicator {
+    font-size: 2.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .game-timer {
+    font-size: 16px !important;
+  }
+
+  .controls {
+    font-size: 0.95em;
+  }
+
+  .player {
+    max-width: 24vw;
+    max-height: 24vw;
+  }
+
+  .coin,
+  .bonus-coin {
+    max-width: 16vw;
+    max-height: 16vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .coin,
+  .bonus-coin {
+    max-width: 12vw;
+    max-height: 12vw;
+    min-width: 20px;
+    min-height: 20px;
+  }
+}
+
+/* iPhone-specific styles */
+@media screen and (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+  .refresh-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    right: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .refresh-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+}
+
+/* Ensure visibility in landscape mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  #gameContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 60px);
+    padding: 5px;
+  }
+}
+
+/* Touch action controls */
+#gameContainer {
+  touch-action: pan-x pan-y;
+}
+
+.game-board {
+  touch-action: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

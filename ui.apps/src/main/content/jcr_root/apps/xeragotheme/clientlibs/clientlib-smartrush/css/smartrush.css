@@ -1,0 +1,491 @@
+/* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+.header-sec {
+	display: flex;
+}
+
+.cit-logo {
+	width: auto;
+}
+
+/* ========================================
+           START SCREEN STYLES
+           ======================================== */
+.start-screen-container {
+	/*  background-image: url('img/citi-start-new-Wide.jpg');
+           background-image: url('assets/images/start-01.png');
+          	background-image: url('images/start-screen-banner.jpg');*/
+	background-image: url('../resources/images/Animate-Start-New.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100vw;
+	height: 83vh !important;
+}
+
+.title-section {
+	text-align: center;
+	padding-top: 5px !important;
+	padding-bottom: 0px !important;
+}
+
+.game-title {
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 100%;
+	letter-spacing: -0.8px;
+	color: #255BE3;
+	margin: 0;
+	padding: 0;
+}
+
+.game-subtitle {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 100%;
+	letter-spacing: -0.4px;
+	color: #121212;
+	margin: 8px 0 0 0;
+	padding: 0;
+}
+
+.start {
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 12px 30px;
+	cursor: pointer;
+}
+
+/* ========================================
+           DOOR ANIMATION STYLES
+           ======================================== */
+.door {
+	position: absolute;
+	top: 0;
+	width: 50vw;
+	height: 100vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: 10;
+	transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.left-door {
+	left: -50vw;
+	background-image: url('../resources/images/door-left-side.png');
+	background-size: 100% 100%;
+}
+
+.right-door {
+	right: -50vw;
+	background-image: url('../resources/images/door-right-side.png');
+	background-size: 100% 100%;
+}
+
+.left-door.active {
+	transform: translateX(50vw);
+}
+
+.right-door.active {
+	transform: translateX(-50vw);
+}
+
+.left-door.open {
+	transform: translateX(-100vw);
+}
+
+.right-door.open {
+	transform: translateX(100vw);
+}
+
+.bottom-slab {
+	position: absolute;
+	bottom: -100px;
+	width: 100vw;
+	height: 100px;
+	background-image: url('../resources/images/Rectangle_131.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	z-index: 9;
+}
+
+.banner {
+	position: absolute;
+	bottom: -200px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 300px;
+	transition: bottom 1s ease-in-out, opacity 0.5s;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.banner.show {
+	bottom: 150px;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/* ========================================
+           TRY AGAIN OVERLAY STYLES
+           ======================================== */
+#try-again {
+	background: linear-gradient(0deg, rgba(47, 0, 0, 0.56),
+		rgba(47, 0, 0, 0.56)), linear-gradient(0deg, rgba(12, 2, 2, 0.27),
+		rgba(12, 2, 2, 0.27)), rgba(143, 143, 143, 0.11);
+	background-size: cover;
+	background-position: center;
+	color: white;
+	height: 100vh;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+	padding: 24px;
+	backdrop-filter: blur(9.300000190734863px)
+}
+
+.try-again-content h2 {
+	font-size: 38px;
+	color: rgba(255, 255, 255, 1);
+	text-shadow: 1.8px 1.8px rgba(255, 255, 255, 0.4);
+	font-weight: 700;
+}
+
+#try-again-score {
+	font-size: 40px;
+}
+
+.try-again-score {
+	font-size: 26px;
+	font-weight: 700;
+	font-family: 'citi-sans-text';
+	text-align: center;
+	margin: 0 auto;
+}
+
+.try-again-score p {
+	background: rgba(255, 255, 255, 1);
+	border: 4px solid rgba(234, 234, 234, 1);
+	display: block;
+	border-radius: 12px;
+	border-width: 4px;
+	padding: 8px 27px 12px 27px;
+	box-sizing: border-box;
+	line-height: 1.2;
+	text-align: center;
+	color: rgba(1, 29, 61, 1);
+	width: fit-content;
+	font-size: 27px;
+	font-weight: 700;
+	margin: 24px auto 0 auto;
+}
+
+.try-again-score span {
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1.4;
+}
+
+/* ========================================
+           TAP TO START OVERLAY STYLES
+           ======================================== */
+.tap-to-start-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 90%;
+	background: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 200;
+	backdrop-filter: blur(2px);
+}
+
+.tap-to-start-overlay[style*="display: none"] {
+	pointer-events: none;
+}
+
+.tap-to-start-content {
+	text-align: center;
+	color: white;
+	font-family: 'Inter', sans-serif;
+	padding: 40px;
+}
+
+.tap-to-start-content h2 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+	font-weight: 700;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tap-indicator {
+	font-size: 3rem;
+	margin: 20px 0;
+	animation: tapPulse 1.5s infinite;
+}
+
+@keyframes tapPulse { 
+	0%, 
+	100% {
+		transform: scale(1);
+		opacity: 0.8;
+	}
+
+	50% {
+		transform :scale(1.2);
+		opacity:1;
+	}
+}
+.tap-to-start-content p {
+	font-size: 1.1rem;
+	margin-top: 15px;
+	opacity: 0.9;
+}
+
+/* ========================================
+           HOW TO PLAY SECTION STYLES
+           ======================================== */
+.title {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 10px 0;
+	text-align: left;
+	color: #000000;
+}
+
+.instruction-card {
+	background-color: #EBEBEB;
+	border-radius: 16px;
+	padding: 20px;
+	margin: 15px 0;
+}
+
+.instruction-text {
+	text-align: left;
+	font-size: 16px;
+	line-height: 1.4;
+	color: #0D0D0D;
+}
+
+.instruction-text b {
+	font-weight: 700;
+}
+
+.icons-container {
+	display: flex;
+	justify-content: center;
+	gap: 0px;
+	place-items: center;
+	margin: 15px 0;
+	flex-direction: column;
+}
+
+.points-text {
+	text-align: center;
+	font-size: 14px;
+	color: #0D0D0D;
+}
+
+.subtitle {
+	font-weight: 600;
+	font-size: 17px;
+	margin: 0 0 4px 0;
+	color: #000000;
+	text-align: center;
+}
+
+#howToPlayHeading {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.reward-image {
+	width: -webkit-fill-available;
+}
+
+/* ========================================
+   LOADING SCREEN STYLES
+   ======================================== */
+#loading-screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	backdrop-filter: blur(5px);
+}
+
+.loading-overlay {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+/* Spinning Blue Circle Loader */
+.spinning-loader {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	margin-bottom: 20px;
+}
+
+.loader-circle {
+	width: 80px;
+	height: 80px;
+	border: 4px solid rgba(37, 91, 227, 0.2); /* Light blue border */
+	border-top: 4px solid #255BE3; /* Citi blue color */
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* Spinning animation */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Loading text */
+.loading-text {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 500;
+	font-family: 'Inter', sans-serif;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
+@media ( max-width : 768px) {
+	.spinning-loader {
+		width: 60px;
+		height: 60px;
+	}
+	.loader-circle {
+		width: 60px;
+		height: 60px;
+		border-width: 3px;
+	}
+	.loading-text {
+		font-size: 16px;
+	}
+}
+
+@media ( max-width : 480px) {
+	.spinning-loader {
+		width: 50px;
+		height: 50px;
+	}
+	.loader-circle {
+		width: 50px;
+		height: 50px;
+		border-width: 3px;
+	}
+	.loading-text {
+		font-size: 14px;
+	}
+}
+
+/* ========================================
+           REWARD SECTION STYLES
+           ======================================== */
+.background-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(180deg, #060606 0%, #606060 100%);
+	z-index: 0;
+}
+
+.background-overlay::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1)
+		1px, transparent 1px),
+		radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 1px,
+		transparent 1px);
+	background-size: 20px 20px, 15px 15px;
+	background-position: 0 0, 10px 10px;
+	opacity: 0.25;
+	pointer-events: none;
+}
+
+.color-firework {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 0;
+}
+
+button.reward-home-btn.nav-button img, button.reward-share-btn.nav-button img
+	{
+	width: 96%;
+}
+
+/* ========================================
+           UTILITY STYLES
+           ======================================== */
+#canvas {
+	display: none;
+}
+
+.apply-btn:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+@media ( max-width :375px) {
+	.game-subtitle {
+		margin: 5px 0 0 0 !important;
+	}
+	.start-screen-container {
+		height: 90.5vh !important;
+	}
+}
+
+@media ( max-width :360px) {
+	.start-screen-container {
+		height: 85.5vh !important;
+	}
+}
+
+@media ( max-width :360px) {
+	.winner-card .coupon-box {
+		font-size: 15px !important;
+	}
+}

@@ -1,0 +1,59 @@
+<div id="reward-section" style="display:none;">
+        <div class="header-sec">
+            <img class="cit-logo" src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/assets/images/citi-blue-redarc-rgb.png" alt="Citi Logo" />
+        </div>
+        <div class="background-overlay"></div>
+        <img src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/assets/images/paper-fireworks.gif" class="color-firework">
+        <div class="reward-popup-content container winner-card">
+            <div class="header">
+                <h2 class="reward-title">Congratulations</h2>
+                <div class="reward-score points">You have scored <span id="rewardPointsSection">100</span>
+                    <b>points!</b>
+                </div>
+            </div>
+            <div class="coupon-card">
+                <div class="coupon-title"><span class="merchant-title">Ryan's Grocery : </span>10% off with min. S$150 spend</div>
+                <div class="coupon-box reward-coupon-row">
+                    <span class="reward-coupon-code" id="rewardCouponSection">#RGCITI10</span>
+                    <div class="icon-box">
+
+                        <button class="reward-copy-btn coupon-icon" title="Copy Code" onclick="copyRewardCouponSection()">
+                            <img src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/images/copy.png" alt="Copy" style="width:18px;vertical-align:middle;" />
+                        </button>
+                         <button class="reward-download-btn coupon-icon" onclick="downloadRewardCouponSection()" title="Download Code">
+                            <img src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/images/download.png" alt="Download" style="width:18px;vertical-align:middle;" />
+                        </button>
+
+                    </div>
+                </div>
+                <p class="info-text">Copy the code above and paste at checkout</p>
+                <div class="reward-coupon-desc">T&Cs apply. <a href="https://www.citiworldprivileges.com/sg-singapore/food_grocery/15_off-340461" target="_blank">Click here</a> to read T&Cs.</div>
+                <canvas id="canvas"></canvas>
+            </div>
+            <button id="reward-claim-btn" class="reward-claim-btn claim-button">Claim Now</button>
+            <div class="reward-card-ad card-promo">
+                <div class="reward-card-ad-text card-text">Don't have a Citi <b>SMRT Card</b> yet?
+                    <br>Sign up to enjoy <b>5% savings*</b> and upsized <span class="reward-cash" style="background-color: #fffffff2; color: #000000; padding: 2px 6px; border-radius: 7px;"><strong>S$400</strong></span> cash back^.</div>
+                <img src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/images/SMRT-Card.png" alt="Citi SMRT Card" class="reward-card-img card-image" style="margin-top: 10px;" />
+                <p class="my-2" style="text-align: center;"><sup>*</sup>^T&Cs apply. ^Applicable to new Citi Cardmembers only.</p>
+                <a class="reward-apply-btn apply-btn" href="https://www.citibank.com.sg/credit-cards/cashback/smrt-credit-card?icid=SGBHAF4ENGAMECAAY01" target="_blank">Apply Now</a>
+            </div>
+            <div class="reward-popup-icons navigation">
+                <button class="reward-home-btn nav-button" onclick="location.href='index.html'"><img src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/images/home.png" alt="Home" /></button>
+                <button class="reward-share-btn nav-button" onclick="triggerShare()"><img src="/etc.clientlibs/xeragotheme/clientlibs/clientlib-smartrush/resources/images/share.png" alt="Share" /></button>
+            </div>
+        </div>
+    </div>
+    <div id="try-again" class="try-again-overlay" style="display: none;">
+        <div class="try-again-content">
+            <h2 class="mb-4">Keep Trying!</h2>
+            <div class="try-again-score mb-4">You scored
+                <p><span id="try-again-score">0</span> Points</p>
+            </div>
+            <p class="mb-5">Play again to get your reward.</p>
+            <p class="mb-0">Target: 100 Points</p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button id="play-again-btn" class="restart-btn">Play Again</button>
+        </div>
+    </div>

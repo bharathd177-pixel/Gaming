@@ -1,0 +1,12 @@
+{
+	"startscreen": {
+	  "gameSubTitle": "Presented by Citi SMRT Card",
+	  "gameTitle": "Rush Hour Run",
+	  "howToPlayButtonText": "How to Play",
+	  "howToPlayButtonUrl": "#",
+	  "logoReference": "/content/dam/xeragotheme/citi-blue-redarc-rgb.png",
+	  "startButtonText": "Start Game",
+	  "tncButtonText": "Terms & Conditions",
+	  "tncButtonUrl": "https://www.citibank.com.sg/tncsrushhourrun/"
+	}
+}

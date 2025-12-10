@@ -1,0 +1,224 @@
+/* ========================================
+   COMPONENT STYLES - Buttons, Forms, UI Elements
+   ======================================== */
+
+/* Buttons */
+.start {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 12px 30px;
+  cursor: pointer;
+}
+
+.restart-btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: #255BE3;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.restart-btn:hover {
+  background: #2980b9;
+}
+
+.refresh-btn {
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.refresh-btn:hover {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.refresh-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Links */
+.tnc a {
+  color: #2E66F3;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Icons */
+.timer-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Overlays */
+.tap-to-start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(2px);
+}
+
+.tap-to-start-overlay[style*="display: none"] {
+  pointer-events: none;
+}
+
+.tap-to-start-content {
+  text-align: center;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding: 40px;
+}
+
+.tap-to-start-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tap-indicator {
+  font-size: 3rem;
+  margin: 20px 0;
+  animation: tapPulse 1.5s infinite;
+}
+
+@keyframes tapPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.tap-to-start-content p {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  opacity: 0.9;
+}
+
+/* Try Again Overlay */
+.try-again-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.try-again-content {
+  background: rgba(0, 0, 0, 0.52);
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem;
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+
+.try-again-content p {
+  font-size: 18px;
+}
+
+/* Background Overlay */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, #060606 0%, #606060 100%);
+  z-index: 0;
+}
+
+.background-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px, 15px 15px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Mobile Device Warning Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content p {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  font-family: 'citi-sans-text', 'citi-interstate', sans-serif;
+}

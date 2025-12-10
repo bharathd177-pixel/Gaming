@@ -1,6 +1,0 @@
-#base=js
-
-react.production.min.js
-react-dom.production.min.js
-gamification-components.umd.js
-custom.js

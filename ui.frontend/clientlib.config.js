@@ -26,7 +26,7 @@ const CLIENTLIB_DIR = path.join(
   'content',
   'jcr_root',
   'apps',
-  'citi',
+  'xeragotheme',
   'clientlibs'
 );
 
@@ -45,7 +45,7 @@ module.exports = {
     {
       ...libsBaseConfig,
       name: 'clientlib-dependencies',
-      categories: ['citi.dependencies'],
+      categories: ['xeragotheme.dependencies'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
@@ -64,9 +64,9 @@ module.exports = {
     {
       ...libsBaseConfig,
       name: 'clientlib-site',
-      categories: ['citi.site'],
-      dependencies: ['citi.dependencies'],
-      embed: ['cititheme.test', 'citibank.citi'],
+      categories: ['xeragotheme.site'],
+      dependencies: ['xeragotheme.dependencies'],
+      embed: ['xeragotheme.games'],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories

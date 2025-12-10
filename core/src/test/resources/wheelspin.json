@@ -1,0 +1,47 @@
+{
+	"wheel_spin_game": {
+		"title": "aa",
+		"spinningText": "Spinning...",
+		"animationDuration": "3000",
+		"wheelSize": "400",
+		"jcr:lastModifiedBy": "admin",
+		"maxRevolutions": "5",
+		"minRevolutions": "3",
+		"jcr:created": "Mon Sep 01 2025 17:31:29 GMT+0530",
+		"buttonText": "SPIN",
+		"jcr:lastModified": "Mon Sep 01 2025 17:37:15 GMT+0530",
+		"sling:resourceType": "xeragotheme/components/wheel-spin-game",
+		"segments": {
+			"item0": {
+				"jcr:primaryType": "nt:unstructured",
+				"text": "Gift Cards",
+				"color": "#0074D9",
+				"value": "1",
+				"redeemCode": "GIFTCARD",
+				"bgColor": "blue",
+				"icon": "test",
+				"probability":"0.125"
+			},
+			"item1": {
+				"jcr:primaryType": "nt:unstructured",
+				"text": "10% off",
+				"color": "#FFDC00",
+				"value": "2",
+				"redeemCode": "10OFF",
+				"bgColor": "blue",
+				"icon": "test",
+				"probability":""
+			},
+			"item2": {
+				"jcr:primaryType": "nt:unstructured",
+				"text": "Free Shipping",
+				"color": "#FF6B6B",
+				"value": "2",
+				"redeemCode": "FREESHIP",
+				"bgColor": "blue",
+				"icon": "test",
+				"probability":"0.125"
+			}
+		}
+	}
+}

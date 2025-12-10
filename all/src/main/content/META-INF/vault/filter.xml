@@ -15,6 +15,6 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <workspaceFilter version="1.0">
-    <filter root="/apps/citi-packages"/>
-    <filter root="/apps/citi-vendor-packages"/>
+    <filter root="/apps/xeragotheme-packages"/>
+    <filter root="/apps/xeragotheme-vendor-packages"/>
 </workspaceFilter>

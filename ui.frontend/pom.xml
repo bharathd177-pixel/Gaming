@@ -22,8 +22,8 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.citi.hub</groupId>
-        <artifactId>citi</artifactId>
+        <groupId>com.theme.xerago</groupId>
+        <artifactId>xerago-theme</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -31,9 +31,9 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>citi.ui.frontend</artifactId>
+    <artifactId>xerago-theme.ui.frontend</artifactId>
     <packaging>pom</packaging>
-    <name>Citi - UI Frontend</name>
+    <name>Xerago Theme - UI Frontend</name>
 
 
     <!-- ====================================================================== -->

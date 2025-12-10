@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/apps/citi/osgiconfig"/>
+    <filter root="/apps/xeragotheme/osgiconfig"/>
 </workspaceFilter>

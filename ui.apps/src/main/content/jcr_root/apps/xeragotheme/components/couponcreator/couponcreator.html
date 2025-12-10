@@ -1,0 +1,32 @@
+<button id="trigger-coupon"
+        data-dam-path="${properties.damPath}"
+        data-target-path="${properties.targetPath}">
+    Create Coupons
+</button>
+
+<script>
+(function() {
+    const btn = document.getElementById('trigger-coupon');
+    if (!btn) return;
+
+    btn.addEventListener('click', async () => {
+        const damPath = btn.dataset.damPath;
+        const targetPath = btn.dataset.targetPath;
+
+        try {
+            const url = '/bin/importcoupons'
+                + '?damPath=' + encodeURIComponent(damPath)
+                + '&targetPath=' + encodeURIComponent(targetPath);
+            const response = await fetch(url, {
+                method: 'GET', // or 'POST'
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const result = await response.text();
+            alert('Coupons created: ' + result);
+        } catch (e) {
+            console.error(e);
+            alert('Failed to create coupons');
+        }
+    });
+})();
+</script>

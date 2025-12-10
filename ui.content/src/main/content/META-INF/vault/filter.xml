@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/citi" mode="merge"/>
-    <filter root="/content/citi" mode="merge"/>
-    <filter root="/content/dam/citi" mode="merge"/>
-    <filter root="/content/experience-fragments/citi" mode="merge"/>
+    <filter root="/conf/xeragotheme" mode="merge"/>
+    <filter root="/content/xeragotheme" mode="merge"/>
+    <filter root="/content/dam/xeragotheme" mode="merge">
+        <exclude pattern="/content/dam/xeragotheme(/.*)?"/>
+        <include pattern="/content/dam/xeragotheme/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/xeragotheme/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/xeragotheme" mode="merge"/>
 </workspaceFilter>

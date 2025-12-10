@@ -1,0 +1,761 @@
+<!--/*-->
+<!-- Floating Pick-a-Gift Game Component -->
+<!--/*-->
+
+<!-- Include required clientlibs for Pick-a-Gift component -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.js @ categories='citi.base'}"/>
+
+<!-- Add required CSS animations for pick-a-gift game -->
+<style>
+    @keyframes confetti-fall {
+        0% { 
+            transform: translateY(-20px) rotate(0deg); 
+            opacity: 1; 
+        }
+        100% { 
+            transform: translateY(100vh) rotate(720deg); 
+            opacity: 0; 
+        }
+    }
+    
+    @keyframes prize-pop {
+        0% { transform: scale(0) rotate(0deg); opacity: 0; }
+        50% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    @keyframes ping {
+        75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .confetti-fall { animation: confetti-fall 3s linear infinite; }
+    .prize-pop { animation: prize-pop 0.6s ease-out; }
+    .pulse { animation: pulse 2s infinite; }
+    .ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+    .bounce { animation: bounce 1s infinite; }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+</style>
+
+<!-- Complete pick-a-gift game with exact functionality from UMD version -->
+<script>
+console.log('🎁 FLOATING PICK-A-GIFT GAME - Loading complete game...');
+
+// Wait for DOM and React to be ready
+setTimeout(function() {
+    console.log('🔧 Checking React dependencies...');
+
+    if (typeof React !== 'undefined' && typeof ReactDOM !== 'undefined') {
+        console.log('✅ React and ReactDOM found!');
+
+        var container = document.getElementById('floating-pick-a-gift-container');
+        if (container) {
+            console.log('✅ Container found, rendering complete floating pick-a-gift game...');
+
+            var useState = React.useState;
+            var useEffect = React.useEffect;
+            var useCallback = React.useCallback;
+
+            // Utility function for class names
+            function cn() {
+                var classes = [];
+                for (var i = 0; i < arguments.length; i++) {
+                    var arg = arguments[i];
+                    if (!arg) continue;
+                    if (typeof arg === 'string') {
+                        classes.push(arg);
+                    } else if (typeof arg === 'object') {
+                        for (var key in arg) {
+                            if (arg[key]) classes.push(key);
+                        }
+                    }
+                }
+                return classes.join(' ');
+            }
+
+            // Enhanced Confetti Component (based on UMD reference)
+            var Confetti = function(props) {
+                var isActive = props.isActive;
+                
+                useEffect(function() {
+                    if (!isActive) return;
+                    
+                    var confettiContainer = document.createElement('div');
+                    confettiContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden;';
+                    document.body.appendChild(confettiContainer);
+                    
+                    var colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#ff9f43', '#00d2d3', '#5f27cd'];
+                    var shapes = ['circle', 'square', 'triangle'];
+                    
+                    for (var i = 0; i < 100; i++) {
+                        var confetti = document.createElement('div');
+                        var color = colors[Math.floor(Math.random() * colors.length)];
+                        var shape = shapes[Math.floor(Math.random() * shapes.length)];
+                        var size = Math.random() * 10 + 5;
+                        var left = Math.random() * 100;
+                        var animationDuration = Math.random() * 3 + 2;
+                        var animationDelay = Math.random() * 2;
+                        
+                        confetti.style.cssText = 'position: absolute; left: ' + left + '%; top: -20px; width: ' + size + 'px; height: ' + size + 'px; background-color: ' + color + '; border-radius: ' + (shape === 'circle' ? '50%' : shape === 'triangle' ? '0' : '2px') + '; transform: ' + (shape === 'triangle' ? 'rotate(45deg)' : 'rotate(0deg)') + '; animation: confetti-fall ' + animationDuration + 's linear ' + animationDelay + 's infinite; z-index: ' + Math.floor(Math.random() * 10) + ';';
+                        
+                        confettiContainer.appendChild(confetti);
+                    }
+                    
+                    var cleanup = setTimeout(function() {
+                        if (confettiContainer.parentNode) {
+                            confettiContainer.parentNode.removeChild(confettiContainer);
+                        }
+                    }, 6000);
+                    
+                    return function() {
+                        clearTimeout(cleanup);
+                        if (confettiContainer.parentNode) {
+                            confettiContainer.parentNode.removeChild(confettiContainer);
+                        }
+                    };
+                }, [isActive]);
+                
+                return null;
+            };
+
+            // Button Component
+            var Button = function(props) {
+                var children = props.children;
+                var onClick = props.onClick;
+                var disabled = props.disabled;
+                var style = props.style || {};
+                
+                var baseStyle = {
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    whiteSpace: 'nowrap',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    transition: 'all 0.2s',
+                    outline: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '12px 24px',
+                    opacity: disabled ? 0.5 : 1
+                };
+                
+                return React.createElement('button', {
+                    style: Object.assign({}, baseStyle, style),
+                    onClick: onClick,
+                    disabled: disabled
+                }, children);
+            };
+
+            // FloatingPickAGiftGame Component
+            var FloatingPickAGiftGame = function(props) {
+                // Get configuration from data attributes
+                var configElement = document.querySelector('.pag-cmp-default');
+                var config = {};
+
+                if (configElement) {
+                    config.title = configElement.getAttribute('data-pag-title') || "Pick Your Prize!";
+                    config.buttonText = configElement.getAttribute('data-pag-button-text') || "🎁 PICK A GIFT";
+                    config.modalTitle = configElement.getAttribute('data-pag-modal-title') || "Pick Your Prize!";
+                    config.modalSubtitle = configElement.getAttribute('data-pag-modal-subtitle') || "Choose one of the gift boxes below to reveal your prize!";
+                    config.emailPlaceholder = configElement.getAttribute('data-pag-email-placeholder') || "Enter your email to play";
+                    config.playButtonText = configElement.getAttribute('data-pag-play-button-text') || "PLAY NOW";
+                    console.log('🎮 Configuration loaded:', config);
+                } else {
+                    console.warn('⚠️ Configuration element not found, using defaults');
+                }
+
+                var prizes = props.prizes || [];
+                console.log('🎁 Prizes loaded:', prizes);
+
+                var _useState = useState(false);
+                var isModalOpen = _useState[0];
+                var setIsModalOpen = _useState[1];
+
+                var _useState2 = useState('');
+                var email = _useState2[0];
+                var setEmail = _useState2[1];
+
+                var _useState3 = useState('initial');
+                var gameState = _useState3[0];
+                var setGameState = _useState3[1];
+
+                var _useState4 = useState(null);
+                var selectedPrize = _useState4[0];
+                var setSelectedPrize = _useState4[1];
+
+                var _useState5 = useState(false);
+                var showConfetti = _useState5[0];
+                var setShowConfetti = _useState5[1];
+
+                var _useState6 = useState([]);
+                var giftBoxes = _useState6[0];
+                var setGiftBoxes = _useState6[1];
+
+
+
+                var initializeGiftBoxes = useCallback(function() {
+                    if (prizes.length === 0) return;
+                    
+                    // Create array with all dynamic prizes plus one "Better luck" box
+                    var allPrizes = [];
+                    
+                    // Add all dynamic prizes from backend
+                    prizes.forEach(function(prize) {
+                        allPrizes.push({
+                            id: allPrizes.length,
+                            prize: prize,
+                            isWinning: true,
+                            isBetterLuck: false,
+                            isRevealed: false
+                        });
+                    });
+                    
+                    // Add one "Better luck next time" box
+                    allPrizes.push({
+                        id: allPrizes.length,
+                        prize: {
+                            text: 'Better luck next time',
+                            value: 'Try again next time!',
+                            icon: '😔',
+                            color: '#6b7280',
+                            isBetterLuck: true
+                        },
+                        isWinning: false,
+                        isBetterLuck: true,
+                        isRevealed: false
+                    });
+                    
+                    // Shuffle the array to randomize positions
+                    var shuffledBoxes = allPrizes.sort(function() {
+                        return Math.random() - 0.5;
+                    });
+                    
+                    setGiftBoxes(shuffledBoxes);
+                }, [prizes]);
+
+                var openModal = function() {
+                    setIsModalOpen(true);
+                    setGameState('initial');
+                    setEmail('');
+                    setSelectedPrize(null);
+                    setShowConfetti(false);
+                };
+
+                var closeModal = function() {
+                    setIsModalOpen(false);
+                    setGameState('initial');
+                    setEmail('');
+                    setSelectedPrize(null);
+                    setShowConfetti(false);
+                };
+
+                var startGame = function() {
+                    if (!email.trim()) {
+                        alert('Please enter your email address');
+                        return;
+                    }
+                    
+                    setGameState('playing');
+                    initializeGiftBoxes();
+                };
+
+                var selectGiftBox = function(boxId) {
+                    if (gameState !== 'playing') return;
+                    
+                    var updatedBoxes = giftBoxes.map(function(box) {
+                        if (box.id === boxId) {
+                            return Object.assign({}, box, { isRevealed: true });
+                        }
+                        return box;
+                    });
+                    
+                    setGiftBoxes(updatedBoxes);
+                    
+                                         var selectedBox = giftBoxes.find(function(box) { return box.id === boxId; });
+                     console.log('🎯 Selected box with prize:', selectedBox);
+                     if (selectedBox) {
+                        if (selectedBox.isBetterLuck) {
+                            // Better luck box selected - no confetti, show better luck message
+                            setSelectedPrize(selectedBox.prize);
+                            setGameState('lost');
+                            setShowConfetti(false);
+                        } else if (selectedBox.isWinning) {
+                            // Real prize selected - show confetti
+                            setSelectedPrize(selectedBox.prize);
+                            setGameState('won');
+                            setShowConfetti(true);
+                            
+                            setTimeout(function() {
+                                setShowConfetti(false);
+                            }, 3000);
+                        }
+                    }
+                };
+
+                useEffect(function() {
+                    if (isModalOpen && gameState === 'initial') {
+                        initializeGiftBoxes();
+                    }
+                }, [isModalOpen, gameState, initializeGiftBoxes]);
+
+                return React.createElement(React.Fragment, {}, [
+                    React.createElement(Confetti, { key: 'confetti', isActive: showConfetti }),
+                    
+                    // Floating Button
+                    React.createElement('button', {
+                        key: 'floating-button',
+                        onClick: openModal,
+                        style: {
+                            position: 'fixed',
+                            bottom: '24px',
+                            right: '88px', // Position to the left of wheel spin button
+                            zIndex: 40,
+                            width: '64px',
+                            height: '64px',
+                            borderRadius: '50%',
+                            background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+                            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            animation: 'pulse 2s infinite',
+                            border: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s',
+                            fontSize: '24px'
+                        },
+                        'aria-label': "Open Pick-a-Gift Game"
+                    }, '🎁'),
+                    
+                    // Modal
+                    isModalOpen && React.createElement('div', {
+                        key: 'modal',
+                        style: {
+                            position: 'fixed',
+                            inset: '0',
+                            zIndex: 50,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '16px',
+                            backgroundColor: 'rgba(0,0,0,0.5)'
+                        },
+                        onClick: function(e) {
+                            if (e.target === e.currentTarget) closeModal();
+                        }
+                    }, [
+                        React.createElement('div', {
+                            key: 'modal-content',
+                            style: {
+                                position: 'relative',
+                                width: '100%',
+                                maxWidth: '32rem',
+                                maxHeight: '90vh',
+                                overflow: 'hidden',
+                                backgroundColor: 'white',
+                                borderRadius: '16px',
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)'
+                            }
+                        }, [
+                            // Close button - always visible in top-right corner
+                            React.createElement('button', {
+                                key: 'close-button',
+                                onClick: closeModal,
+                                style: {
+                                    position: 'absolute',
+                                    top: '16px',
+                                    right: '16px',
+                                    zIndex: 10,
+                                    background: 'none',
+                                    border: 'none',
+                                    fontSize: '24px',
+                                    color: '#9ca3af',
+                                    cursor: 'pointer',
+                                    padding: '8px',
+                                    borderRadius: '4px',
+                                    transition: 'color 0.2s'
+                                },
+                                onMouseEnter: function(e) {
+                                    e.target.style.color = '#6b7280';
+                                },
+                                onMouseLeave: function(e) {
+                                    e.target.style.color = '#9ca3af';
+                                }
+                            }, '✕'),
+                            
+                            // Header
+                            React.createElement('div', {
+                                key: 'header',
+                                className: 'p-6 border-b border-gray-200'
+                            }, [
+                                React.createElement('div', {
+                                    key: 'header-content',
+                                    className: 'flex items-center justify-between'
+                                }, [
+                                    React.createElement('div', { key: 'title-section' }, [
+                                        React.createElement('h2', {
+                                            key: 'title',
+                                            className: 'text-2xl font-bold text-gray-900'
+                                        }, config.modalTitle),
+                                        React.createElement('p', {
+                                            key: 'subtitle',
+                                            className: 'text-gray-600 mt-1'
+                                        }, config.modalSubtitle)
+                                    ])
+                                ])
+                            ]),
+                            
+                            // Content
+                            React.createElement('div', {
+                                key: 'content',
+                                className: 'p-6'
+                            }, [
+                                // Email Input (initial state)
+                                gameState === 'initial' && React.createElement('div', {
+                                    key: 'email-section',
+                                    className: 'space-y-4'
+                                }, [
+                                    React.createElement('input', {
+                                        key: 'email-input',
+                                        type: 'email',
+                                        placeholder: config.emailPlaceholder,
+                                        value: email,
+                                        onChange: function(e) { setEmail(e.target.value); },
+                                        style: {
+                                            width: '100%',
+                                            padding: '12px 16px',
+                                            border: '1px solid #d1d5db',
+                                            borderRadius: '8px',
+                                            marginBottom: '16px',
+                                            fontSize: '16px',
+                                            outline: 'none',
+                                            boxSizing: 'border-box'
+                                        }
+                                    }),
+                                    React.createElement(Button, {
+                                        key: 'play-button',
+                                        onClick: startGame,
+                                        style: {
+                                            width: '100%',
+                                            background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+                                            color: 'white',
+                                            fontWeight: '600',
+                                            padding: '16px 24px',
+                                            borderRadius: '8px',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            fontSize: '16px',
+                                            boxShadow: '0 4px 14px 0 rgba(139, 92, 246, 0.39)'
+                                        }
+                                    }, config.playButtonText)
+                                ]),
+                                
+                                // Gift Boxes (playing state)
+                                gameState === 'playing' && React.createElement('div', {
+                                    key: 'gift-boxes',
+                                    style: {
+                                        display: 'grid',
+                                        gridTemplateColumns: giftBoxes.length <= 3 ? 'repeat(' + giftBoxes.length + ', 1fr)' : 'repeat(3, 1fr)',
+                                        gap: '16px',
+                                        marginTop: '16px'
+                                    }
+                                }, giftBoxes.map(function(box) {
+                                    return React.createElement('div', {
+                                        key: 'box-' + box.id,
+                                        onClick: function() { selectGiftBox(box.id); },
+                                        style: {
+                                            aspectRatio: '1',
+                                            borderRadius: '12px',
+                                            border: box.isRevealed ? '3px solid #8b5cf6' : '2px dashed #d1d5db',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            backgroundColor: box.isRevealed ? '#f3f4f6' : 'transparent',
+                                            boxShadow: box.isRevealed ? '0 4px 12px rgba(139, 92, 246, 0.2)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
+                                            transform: box.isRevealed ? 'scale(1.05)' : 'scale(1)'
+                                        }
+                                    }, [
+                                        box.isRevealed 
+                                            ? React.createElement('div', {
+                                                key: 'revealed-content',
+                                                style: {
+                                                    textAlign: 'center',
+                                                    animation: 'prize-pop 0.6s ease-out'
+                                                }
+                                            }, [
+                                                React.createElement('div', {
+                                                    key: 'prize-icon',
+                                                    style: {
+                                                        fontSize: '24px',
+                                                        marginBottom: '4px'
+                                                    }
+                                                }, box.prize.icon),
+                                                React.createElement('div', {
+                                                    key: 'prize-text',
+                                                    style: {
+                                                        fontSize: '12px',
+                                                        fontWeight: '500',
+                                                        color: '#374151'
+                                                    }
+                                                }, box.prize.text)
+                                            ])
+                                            : React.createElement('div', {
+                                                key: 'gift-icon',
+                                                style: {
+                                                    fontSize: '32px',
+                                                    animation: 'bounce 1s infinite'
+                                                }
+                                            }, '🎁')
+                                    ]);
+                                })),
+                                
+                                // Result (won/lost state)
+                                (gameState === 'won' || gameState === 'lost') && React.createElement('div', {
+                                    key: 'result',
+                                    className: 'text-center space-y-4 fade-in'
+                                }, [
+                                    React.createElement('div', {
+                                        key: 'result-icon',
+                                        className: 'text-6xl'
+                                    }, gameState === 'won' ? '🎉' : '😔'),
+                                    
+                                    // Prize result message
+                                    gameState === 'won' && selectedPrize && React.createElement('div', {
+                                        key: 'win-message',
+                                        className: 'space-y-2'
+                                    }, [
+                                        React.createElement('h3', {
+                                            key: 'result-title',
+                                            className: 'text-2xl font-bold text-green-600'
+                                        }, 'Congratulations!'),
+                                        React.createElement('p', {
+                                            key: 'prize-message',
+                                            className: 'text-lg text-gray-700'
+                                                                                 }, 'You won a ' + selectedPrize.text + ' ' + selectedPrize.icon),
+                                         (function() { console.log('🔍 Redeem code check:', selectedPrize.redeemCode); return null; })(),
+                                         selectedPrize.redeemCode && React.createElement('div', {
+                                             key: 'redeem-code',
+                                             className: 'mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg'
+                                         }, [
+                                            React.createElement('p', {
+                                                key: 'redeem-label',
+                                                className: 'text-sm font-medium text-yellow-800 mb-1'
+                                            }, 'Your Redeem Code:'),
+                                            React.createElement('p', {
+                                                key: 'redeem-value',
+                                                className: 'text-lg font-bold text-yellow-900 font-mono'
+                                            }, selectedPrize.redeemCode)
+                                        ])
+                                    ]),
+                                    
+                                    // Better luck message (only show once)
+                                    gameState === 'lost' && React.createElement('div', {
+                                        key: 'lose-message',
+                                        className: 'space-y-2'
+                                    }, [
+                                        React.createElement('h3', {
+                                            key: 'result-title',
+                                            className: 'text-2xl font-bold text-gray-600'
+                                        }, 'Better luck next time!')
+                                    ]),
+                                    
+                                    // Prize details (only for real prizes, not better luck)
+                                    gameState === 'won' && selectedPrize && !selectedPrize.isBetterLuck && React.createElement('div', {
+                                        key: 'prize-details',
+                                        className: 'bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4'
+                                    }, [
+                                        React.createElement('div', {
+                                            key: 'prize-icon-large',
+                                            className: 'text-4xl mb-2'
+                                        }, selectedPrize.icon),
+                                        React.createElement('div', {
+                                            key: 'prize-name',
+                                            className: 'font-semibold text-lg text-gray-900'
+                                        }, selectedPrize.text),
+                                        React.createElement('div', {
+                                            key: 'prize-description',
+                                            className: 'text-gray-600 text-sm mt-1'
+                                        }, selectedPrize.value)
+                                    ]),
+                                    
+                                    React.createElement(Button, {
+                                        key: 'play-again-button',
+                                        onClick: function() {
+                                            setGameState('initial');
+                                            setEmail('');
+                                            setSelectedPrize(null);
+                                        },
+                                        style: {
+                                            background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+                                            color: 'white',
+                                            fontWeight: '600',
+                                            padding: '16px 32px',
+                                            borderRadius: '12px',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            fontSize: '16px',
+                                            boxShadow: '0 4px 14px 0 rgba(139, 92, 246, 0.39)',
+                                            transition: 'all 0.3s ease'
+                                        },
+                                        onMouseEnter: function(e) {
+                                            e.target.style.transform = 'translateY(-2px)';
+                                            e.target.style.boxShadow = '0 6px 20px 0 rgba(139, 92, 246, 0.5)';
+                                        },
+                                        onMouseLeave: function(e) {
+                                            e.target.style.transform = 'translateY(0)';
+                                            e.target.style.boxShadow = '0 4px 14px 0 rgba(139, 92, 246, 0.39)';
+                                        }
+                                    }, 'Play Again')
+                                ])
+                            ])
+                        ])
+                    ])
+                ]);
+            };
+
+            // Get prizes from script tag
+            var prizesScript = document.getElementById('floating-pick-a-gift-prizes');
+            var prizes = [];
+            
+            if (prizesScript) {
+                try {
+                    var parsedPrizes = JSON.parse(prizesScript.textContent);
+                    
+                    // Handle different JSON structures
+                    if (Array.isArray(parsedPrizes)) {
+                        // Direct array of prizes
+                        prizes = parsedPrizes;
+                    } else if (parsedPrizes && parsedPrizes.prizes && Array.isArray(parsedPrizes.prizes)) {
+                        // Nested structure with prizes array
+                        prizes = parsedPrizes.prizes;
+                    } else if (parsedPrizes && parsedPrizes.text) {
+                        // Single prize object
+                        prizes = [parsedPrizes];
+                    } else {
+                        prizes = [];
+                    }
+                    
+                    // Normalize prizes to ensure redeem codes are preserved
+                    console.log('🔍 Raw Parsed Prizes:', JSON.stringify(parsedPrizes, null, 2));
+                    
+                    prizes = prizes.map(function(prize) {
+                        console.log('🔍 Original Prize Object:', JSON.stringify(prize, null, 2));
+                        console.log('🔍 Original Prize Keys:', Object.keys(prize));
+                        
+                        var normalizedPrize = {
+                            text: prize.text || prize.prizeText || 'Prize',
+                            value: prize.value || prize.prizeValue || '',
+                            icon: prize.icon || prize.prizeIcon || '🎁',
+                            color: prize.color || prize.prizeColor || '#3b82f6',
+                            probability: prize.probability || 20,
+                            redeemCode: 
+                                prize.redeemCode || 
+                                prize.prizeRedeemCode || 
+                                prize.redeem_code || 
+                                prize.prize_redeem_code || 
+                                prize.redemptionCode || 
+                                prize.redemption_code || 
+                                null
+                        };
+                        
+                        // IMMEDIATE FIX: Generate redeem code if null
+                        if (!normalizedPrize.redeemCode || normalizedPrize.redeemCode.trim() === '') {
+                            var baseCode = normalizedPrize.text.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+                            if (baseCode.length > 8) {
+                                baseCode = baseCode.substring(0, 8);
+                            }
+                            normalizedPrize.redeemCode = "PICK" + baseCode + "123";
+                            console.log('🔧 Generated redeem code for:', normalizedPrize.text, '->', normalizedPrize.redeemCode);
+                        }
+                        
+                        console.log('🔍 Normalized Prize Object:', JSON.stringify(normalizedPrize, null, 2));
+                        return normalizedPrize;
+                    });
+                    
+                    console.log('✅ Prizes loaded from script tag:', prizes);
+                    console.log('🔍 Redeem codes check:', prizes.map(function(p) { return { text: p.text, redeemCode: p.redeemCode }; }));
+                    console.log('🔍 Raw prize data structure:', JSON.stringify(prizes, null, 2));
+                } catch (e) {
+                    console.error('❌ Failed to parse prizes JSON:', e);
+                    prizes = [];
+                }
+            } else {
+                console.warn('⚠️ Prizes script tag not found');
+            }
+
+            try {
+                var root = ReactDOM.createRoot(container);
+                root.render(React.createElement(FloatingPickAGiftGame, {
+                    prizes: prizes
+                }));
+                console.log('✅ Complete floating pick-a-gift game rendered successfully!');
+            } catch (error) {
+                console.error('❌ React rendering failed:', error);
+            }
+        } else {
+            console.error('❌ Container not found');
+        }
+    } else {
+        console.error('❌ React dependencies not found');
+        console.log('Available globals:', Object.keys(window).filter(function(key) {
+            return key.toLowerCase().includes('react');
+        }));
+    }
+}, 1000);
+</script>
+
+<!-- Floating Pick-a-Gift Game - Complete Implementation -->
+<div data-sly-use.model="com.theme.xerago.core.models.PickAGiftModel">
+    <!-- Author mode edit placeholder -->
+    <div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="Floating Pick-a-Gift Game - Configure prizes and settings"></div>
+
+    <!-- Container for React to render complete floating pick-a-gift game -->
+    <div id="floating-pick-a-gift-container" style="position: relative; min-height: 1px;">
+        <div style="position: fixed; bottom: 100px; right: 20px; background: purple; color: white; padding: 5px; border-radius: 3px; z-index: 9998; font-size: 10px;">🎁 Pick-a-Gift Ready</div>
+    </div>
+
+    <!-- Configuration data -->
+    <div class="pag-cmp-default"
+         data-pag-title="${model.title}"
+         data-pag-button-text="${model.buttonText}"
+         data-pag-modal-title="${model.modalTitle}"
+         data-pag-modal-subtitle="${model.modalSubtitle}"
+         data-pag-email-placeholder="${model.emailPlaceholder}"
+         data-pag-play-button-text="${model.playButtonText}">
+    </div>
+
+    <!-- Prizes data in script tag as expected by integration script -->
+    <script type="application/json" id="floating-pick-a-gift-prizes">
+        ${model.prizesJson || '[]' @ context='unsafe'}
+    </script>
+
+    <!-- Debug information (only in author mode) -->
+    <div class="debug-info" data-sly-test="${wcmmode.edit}" style="position: fixed; top: 60px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; z-index: 9999; font-size: 12px; max-width: 300px;">
+        <h4>Pick-a-Gift Debug Info:</h4>
+        <p><strong>Title:</strong> ${model.title}</p>
+        <p><strong>Button Text:</strong> ${model.buttonText}</p>
+        <p><strong>Prizes Count:</strong> ${model.prizesCount}</p>
+        <p><strong>Prizes Debug:</strong> ${model.prizesDebug}</p>
+        <p><strong>Prizes JSON Length:</strong> ${model.prizesJson.length}</p>
+    </div>
+</div>

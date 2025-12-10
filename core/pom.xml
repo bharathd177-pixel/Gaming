@@ -18,14 +18,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.citi.hub</groupId>
-        <artifactId>citi</artifactId>
+        <groupId>com.theme.xerago</groupId>
+        <artifactId>xerago-theme</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>citi.core</artifactId>
-    <name>Citi - Core</name>
-    <description>Core bundle for Citi</description>
+    <artifactId>xerago-theme.core</artifactId>
+    <name>Xerago Theme - Core</name>
+    <description>Core bundle for Xerago Theme</description>
     <build>
         <plugins>
             <plugin>
@@ -77,10 +77,31 @@ Import-Package: javax.annotation;version=0.0.0,*
                     </archive>
                 </configuration>
             </plugin>
+            <!--new line 
+            <plugin>
+			    <groupId>org.apache.felix</groupId>
+			    <artifactId>maven-bundle-plugin</artifactId>
+			    <version>5.1.2</version>
+			    <extensions>true</extensions>
+			    <configuration>
+			        <instructions>
+			            <Bundle-SymbolicName>com.google.gson</Bundle-SymbolicName>
+			            <Export-Package>com.google.gson;version=2.10.1</Export-Package>
+			            <Import-Package>*</Import-Package>
+			        </instructions>
+			    </configuration>
+			</plugin>-->
+
         </plugins>
     </build>
 
     <dependencies>
+    	<dependency>
+		  <groupId>com.google.code.gson</groupId>
+		  <artifactId>gson</artifactId>
+		  <version>2.10.1</version>
+		  <scope>test</scope>
+		</dependency>
         <dependency>
             <groupId>uk.org.lidalia</groupId>
             <artifactId>slf4j-test</artifactId>
@@ -140,5 +161,11 @@ Import-Package: javax.annotation;version=0.0.0,*
             <version>1.4.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+		  <groupId>xerces</groupId>
+		  <artifactId>xercesImpl</artifactId>
+		  <version>2.12.2</version>
+		  <scope>test</scope>
+		</dependency>
     </dependencies>
 </project>

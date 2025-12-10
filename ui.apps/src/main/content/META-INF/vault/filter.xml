@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/apps/citi/clientlibs"/>
-    <filter root="/apps/citi/components"/>
-    <filter root="/apps/citi/i18n"/>
+    <filter root="/apps/xeragotheme/clientlibs"/>
+    <filter root="/apps/xeragotheme/components"/>
+    <filter root="/apps/xeragotheme/i18n"/>
 </workspaceFilter>

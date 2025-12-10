@@ -1,0 +1,11 @@
+{
+	"gamescreen": {
+	  "statTitle": "Score 100 points to get your reward",
+	  "description": "Swipe left, right, up or down to move your avatar and collect the icons",
+	  "timerImgReference": "/content/dam/xeragotheme/Time.png",
+	  "refreshLogoReference": "/content/dam/xeragotheme/refresh.png",
+	  "title": "TAP TO START",
+	  "logoReference": "/content/dam/xeragotheme/citi-blue-redarc-rgb.png",
+	  "textIsRich": "true"
+	}
+}

@@ -1,0 +1,51 @@
+<!--/*-->
+<!-- Wheel Spin Game Component - Complete Implementation -->
+<!--/*-->
+<!-- Include required clientlibs for Wheel Spin Game component-->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.js @ categories='citi.games'}"/>
+
+<!-- Add required CSS animations for wheel spin game -->
+
+
+<!-- Complete wheel spin game with exact functionality from test-built-app-fixed.html -->
+
+
+<!-- Wheel Spin Game - Complete Implementation -->
+<div data-sly-use.model="com.theme.xerago.core.models.WheelSpinGameModel">
+    <!-- Author mode edit placeholder -->
+    <div data-sly-test="${wcmmode.edit}" class="cq-placeholder" data-emptytext="Wheel Spin Game - Configure segments and settings"></div>
+
+    <!-- Container for React to render complete wheel spin game -->
+    <div id="wheel-spin-game-container" style="position: relative; min-height: 1px;">
+        <div style="position: fixed; bottom: 50px; right: 20px; background: green; color: white; padding: 5px; border-radius: 3px; z-index: 9998; font-size: 10px;">📍 Complete Game Ready</div>
+    </div>
+
+        <!-- Configuration data -->
+        <div class="wsg-cmp-default" 
+             data-wsg-title="${model.title || 'Spin to Win!'}"
+             data-wsg-button-text="${model.buttonText || 'SPIN'}"
+             data-wsg-spinning-text="${model.spinningText || 'Spinning...'}"
+             data-wsg-wheel-size="${model.wheelSize || 400}"
+             data-wsg-animation-duration="${model.animationDuration || 3000}"
+             data-wsg-min-revolutions="${model.minRevolutions || 3}"
+         data-wsg-max-revolutions="${model.maxRevolutions || 5}">
+        </div>
+        
+    <!-- Segments data in script tag as expected by integration script -->
+        <script type="application/json" id="wheel-spin-game-segments">
+        ${model.segmentsJson || '[]' @ context='unsafe'}
+        </script>
+        
+                <!-- Debug information (only in author mode) -->
+            <div class="debug-info" data-sly-test="${wcmmode.edit}" style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; z-index: 9999; font-size: 12px; max-width: 300px;">
+        <h4>Debug</h4>
+                <p><strong>Title:</strong> ${model.title || 'Spin to Win!'}</p>
+                <p><strong>Button Text:</strong> ${model.buttonText || 'SPIN'}</p>
+                <p><strong>Wheel Size:</strong> ${model.wheelSize || 400}</p>
+                <p><strong>Animation Duration:</strong> ${model.animationDuration || 3000}ms</p>
+                <p><strong>Segments Count:</strong> ${model.segmentsCount || 0}</p>
+                <p><strong>Segments Debug:</strong> ${model.segmentsDebug}</p>
+                <p><strong>Segments JSON Length:</strong> ${model.segmentsJson.length}</p>
+    </div>
+</div>

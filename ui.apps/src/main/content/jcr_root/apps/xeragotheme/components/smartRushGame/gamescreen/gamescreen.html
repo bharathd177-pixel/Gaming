@@ -1,0 +1,69 @@
+<!-- Game Screen Section -->
+<div id="game-screen" data-sly-use.model="com.theme.xerago.core.models.GameScreenModel">
+
+	<!-- Tap-to-Start Overlay -->
+	<div id="tapToStart" class="tap-to-start-overlay">
+		<div class="tap-to-start-content">
+			<h2>${model.title}</h2>
+			<span>${model.description @ context="html"}</span>
+			<div class="tap-indicator">👆🏻</div>
+		</div>
+	</div>
+	<!-- Migrated from index-game.html -->
+	<div id="landscape-block"
+		style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; color: #222; z-index: 99999; align-items: center; justify-content: center; text-align: center; font-size: 1.2em;">
+		🔄 Please rotate your device to portrait mode to play the game.</div>
+	<noscript style="color: white; text-align: center">You need
+		to enable JavaScript to run this app.</noscript>
+	<div id="react-root">
+		<div class="page-loading" role="alert" aria-busy="true"
+			aria-live="polite" aria-label="loading">
+			<div class="loading__animation">
+				<div class="loading__animation__bounce"></div>
+				<div class="loading__animation__bounce"></div>
+				<div class="loading__animation__bounce"></div>
+			</div>
+		</div>
+	</div>
+	<!-- Begin full game content from index-game.html -->
+	<div class="header-sec">
+		<img class="cit-logo" src="${model.logoReference}" alt="Citi Logo" /> <a
+			class="refresh-btn" onclick="window.location.reload();"
+			title="Restart"><img src="${model.refreshLogoReference}" alt="Refresh"
+			class="refresh-icon" /></a>
+	</div>
+	<div class="stats">
+		<div class="controls">${model.statTitle}</div>
+		<div class="score">
+			<div class="points-section">
+				<div class="points-icon">
+					<span class="circle green"></span> <span class="circle orange"></span>
+					<span class="circle brown"></span>
+				</div>
+				<div class="points-display">
+					<span id="pointsDisplay">0</span>
+				</div>
+			</div>
+			<div class="timer">
+				<div class="shine-icon">
+					<img src="${model.timerImgReference}" alt="Timer" class="timer-icon" />
+				</div>
+				<span id="timer">1:00</span>
+			</div>
+		</div>
+	</div>
+	<div class="game-container">
+		<div class="viewport">
+			<div class="game-board metro-map-container" id="gameBoard">
+				<!-- SVG Container for Metro Lines -->
+				<svg id="metroSVG" width="100%" height="100%"
+					style="position: absolute; top: 0; left: 0; z-index: 4; pointer-events: none;">
+                        <!-- Metro lines will be drawn here -->
+                    </svg>
+				<!-- Update the player HTML structure -->
+				<div id="player" class="player"></div>
+			</div>
+		</div>
+	</div>
+	<!-- End full game content from index-game.html -->
+</div>

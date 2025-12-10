@@ -1,0 +1,25 @@
+<audio id="bgMusic" preload="auto" loop>
+    <source src="/content/dam/xeragotheme/music/Party-audiomass.mp3" type="audio/mpeg">
+  </audio>
+<input type="hidden" id="coupon-generator" data-path="${resource.path}">
+<div id="start-screen" data-sly-use.model="com.theme.xerago.core.models.GameStartScreenModel">
+	<div class="header-sec"">
+		<img class="cit-logo" src="${model.logoReference}" alt="Citi Logo" />
+	</div>
+	<div class="container p-0 bgGrey start-screen-container">
+		<div class="title-section">
+			<h1 class="game-title">${model.gameTitle}</h1>
+			<p class="game-subtitle">${model.gameSubTitle}</p>
+		</div>
+		<div class="div-2">
+			<div class="div2 d-flex justify-content-center">
+				<button id="to-door-animation"
+					class="start btn btn-primary py-2 border-18 rounded-pill">${model.startButtonText}</button>
+			</div>
+			<div class="tnc d-flex justify-content-between px-3 mt-4 mb-3">
+				<a href="${model.tncButtonUrl}" target="_blank" id="tnc-link">${model.tncButtonText}</a>
+				<a href="${model.howToPlayButtonUrl}" id="how-to-play">${model.howToPlayButtonText}</a>
+			</div>
+		</div>
+	</div>
+</div>
