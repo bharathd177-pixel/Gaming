@@ -2,7 +2,6 @@
     "scripts": [
         "create path (sling:OrderedFolder) /content/dam/xeragotheme",
         "create path (nt:unstructured) /content/dam/xeragotheme/jcr:content",
-        "set properties on /content/dam/xeragotheme/jcr:content\n  set cq:conf{String} to /conf/xeragotheme\n  set jcr:title{String} to \"Xerago Theme\"\nend",
-        "delete path /apps/xeragotheme/osgiconfig/config/com.adobe.granite.csrf.impl.CSRFFilter.cfg.json"
+        "set properties on /content/dam/xeragotheme/jcr:content\n  set cq:conf{String} to /conf/xeragotheme\n  set jcr:title{String} to \"Xerago Theme\"\nend"
     ]
 }
